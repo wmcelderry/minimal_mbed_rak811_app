@@ -1,0 +1,13 @@
+{
+    "requires": ["bare-metal", "events"],
+    "target_overrides": {
+        "*": {
+            "target.stdio_uart_rx":"PA_10",
+            "target.stdio_uart_tx":"PA_9",
+
+
+            "platform.stdio-baud-rate":115200,
+            "target.c_lib": "small"
+        }
+    }
+}
