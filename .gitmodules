@@ -1,0 +1,8 @@
+[submodule "mbed-os"]
+	path = mbed-os
+	url = git@github.com:wmcelderry/mbed-os.git
+	branch = pr15164_rebased
+[submodule "stm32customtargets"]
+	path = stm32customtargets
+	url = git@github.com:wmcelderry/stm32customtargets.git
+	branch = GT_STM32L1_cherry
