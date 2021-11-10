@@ -13,7 +13,7 @@ void report()
 
 int main(int argc,char *argv[])
 {
-#if defined STARTUP_PRINT
+#if STARTUP_PRINT
     printf("Started the target app.\r\n");
 #endif
 
