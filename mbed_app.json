@@ -1,6 +1,8 @@
 {
-    "requires": ["bare-metal", "events"],
+    "requires": ["bare-metal", "events", "lora", "sx1276-lora-driver", "mbedtls", "mbedtls-stm"],
+
     "target_overrides": {
+
         "*": {
             "target.stdio_uart_rx":"PA_10",
             "target.stdio_uart_tx":"PA_9",
@@ -8,6 +10,33 @@
 
             "platform.stdio-baud-rate":115200,
             "target.c_lib": "small"
+        ,
+
+            "lora.over-the-air-activation": true,
+            "lora.duty-cycle-on": true,
+            "lora.phy": "EU868",
+            "lora.device-eui": "{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }",
+            "lora.application-eui": "{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }",
+            "lora.application-key": "{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }",
+
+            "sx1276-lora-driver.spi-mosi":       "SPI_RF_MOSI",
+            "sx1276-lora-driver.spi-miso":       "SPI_RF_MISO",
+            "sx1276-lora-driver.spi-sclk":       "SPI_RF_SCK",
+            "sx1276-lora-driver.spi-cs":         "SPI_RF_CS",
+            "sx1276-lora-driver.reset":          "SPI_RF_RESET",
+            "sx1276-lora-driver.dio0":           "DIO0",
+            "sx1276-lora-driver.dio1":           "DIO1",
+            "sx1276-lora-driver.dio2":           "DIO2",
+            "sx1276-lora-driver.dio3":           "DIO3",
+            "sx1276-lora-driver.dio4":           "DIO4",
+            "sx1276-lora-driver.dio5":           "NC",
+            "sx1276-lora-driver.txctl":          "ANT_CTX_PA",
+            "sx1276-lora-driver.rxctl":          "ANT_CRX_RX",
+            "sx1276-lora-driver.tcxo":           "RF_TCXO_EN"
         }
-    }
+    },
+    "macros": [
+            "MBEDTLS_USER_CONFIG_FILE=\"mbedtls_lora_config.h\"",
+            "MBED_TICKLESS"
+    ]
 }
